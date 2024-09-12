@@ -33,12 +33,15 @@ function App() {
   }
 
   const handleCancelProject = () => {
-    setProjectsState(prevState => {
-      return {
-        ...prevState,
-        selectedProjectId: undefined
-      }
+    setProjectsState(prevState => ({
+      ...prevState,
+      selectedProjectId: undefined
     })
+    )
+  }
+
+  const handleSelectProject = (id) => {
+    console.log(id);
   }
 
   let content;
@@ -51,7 +54,11 @@ function App() {
 
   return (
     <main className="h-screen my-8 flex gap-8">
-      <ProjectSidebar onAddProject={handleStartAddProject} />
+      <ProjectSidebar 
+      onAddProject={handleStartAddProject}
+        projects={projectsState.projects}
+        onSelectProject={handleSelectProject}
+      />
       {content}
     </main>
   );

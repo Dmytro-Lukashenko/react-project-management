@@ -26,7 +26,17 @@ function App() {
       }
       return {
         ...prevState,
+        selectedProjectId: undefined,
         projects: [...prevState.projects, newProject]
+      }
+    })
+  }
+
+  const handleCancelProject = () => {
+    setProjectsState(prevState => {
+      return {
+        ...prevState,
+        selectedProjectId: undefined
       }
     })
   }
@@ -34,13 +44,10 @@ function App() {
   let content;
 
   if (projectsState.selectedProjectId === null) {
-    content = <NewProject onAdd={handleAddProject} />
+    content = <NewProject onAdd={handleAddProject} onCancel={handleCancelProject} />
   } else if (projectsState.selectedProjectId === undefined) {
     content = <NoProjectSelected onAddProject={handleStartAddProject} />
   }
-
-  console.log(projectsState)
-
 
   return (
     <main className="h-screen my-8 flex gap-8">

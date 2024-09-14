@@ -17,7 +17,6 @@ const NewProject = ({ onAdd, onCancel }) => {
             enteredDescription.value?.trim() === '' ||
             enteredDueDate.value?.trim() === '') {
             modalRef.current?.open()
-            console.log('open')
             return
         }
         onAdd({

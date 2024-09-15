@@ -6,6 +6,7 @@ const SelectedProject = ({ tasks, project, onDelete, onAddTask, onDeleteTask }) 
         month: 'short',
         day: 'numeric'
     })
+    const currentProjectTasks = tasks.filter(task => task.projectId === project.id);
     return (
         <div className="w-[35rem] mt-16">
             <header className="pb-4 mb-4 border-b-2 border-stone-300">
@@ -16,7 +17,7 @@ const SelectedProject = ({ tasks, project, onDelete, onAddTask, onDeleteTask }) 
                 <p className="mb-4 text-stone-400">{formattedDate}</p>
                 <p className="text-stone-300 whitespace-pre-wrap">{project.description}</p>
             </header>
-            <Tasks tasks={tasks} onAddTask={onAddTask} onDeleteTask={onDeleteTask}/>
+            <Tasks tasks={currentProjectTasks} onAddTask={onAddTask} onDeleteTask={onDeleteTask} />
         </div>
     )
 }
